@@ -200,13 +200,6 @@ The frontend is ready for deployment on:
 ### Backend Status
 ✅ **Already deployed and running** - No additional setup required
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## 📝 License
 
@@ -218,13 +211,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - GitHub: [@Jubrilabdulazeez](https://github.com/Jubrilabdulazeez)
 - Project: [EduConnect Africa](https://github.com/Jubrilabdulazeez/Capstone-Project)
 
-## 🙏 Acknowledgments
-
-- Next.js team for the amazing framework
-- Tailwind CSS for the utility-first styling
-- shadcn/ui for the beautiful component library
-- FastAPI for the robust backend framework
-
 ---
 
-**Note**: This is a capstone project demonstrating full-stack web development skills with modern technologies. The backend is deployed and ready to use, so you only need to run the frontend locally for development. 
+**Note**: This is a capstone project demonstrating full-stack web development skills with modern technologies. The backend is deployed on render and ready to use, so you only need to run the frontend locally for development. 
