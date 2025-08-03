@@ -6,7 +6,7 @@ import { ArrowRight, Book, FileText, Globe, Lightbulb, MessageSquare, Plane } fr
 import Link from "next/link";
 
 export default function ResourcesPage() {
-  // Sample country guides
+  // Sample country guides with real URLs
   const countryGuides = [
     {
       id: "guide-001",
@@ -14,6 +14,7 @@ export default function ResourcesPage() {
       description: "Everything Nigerian students need to know about studying in Ghana, from application requirements to student life and cultural tips.",
       icon: Globe,
       color: "bg-blue-50 text-blue-600",
+      url: "https://www.ug.edu.gh/international-students",
     },
     {
       id: "guide-002",
@@ -21,6 +22,7 @@ export default function ResourcesPage() {
       description: "Comprehensive information on South African universities, visa requirements, living costs, and integration into South African student life.",
       icon: Globe,
       color: "bg-green-50 text-green-600",
+      url: "https://www.uct.ac.za/apply/international",
     },
     {
       id: "guide-003",
@@ -28,6 +30,7 @@ export default function ResourcesPage() {
       description: "Learn about Kenya's education system, top universities, accommodation options, and tips for Nigerian students adapting to Kenyan culture.",
       icon: Globe,
       color: "bg-red-50 text-red-600",
+      url: "https://www.uonbi.ac.ke/international-students",
     },
     {
       id: "guide-004",
@@ -35,10 +38,11 @@ export default function ResourcesPage() {
       description: "Detailed information on Egyptian universities, application processes, Arabic language resources, and navigating student life in Egypt.",
       icon: Globe,
       color: "bg-yellow-50 text-yellow-600",
+      url: "https://www.aucegypt.edu/admissions/international",
     },
   ];
 
-  // Sample application tips
+  // Sample application tips with real URLs
   const applicationTips = [
     {
       id: "tip-001",
@@ -46,6 +50,7 @@ export default function ResourcesPage() {
       description: "Expert tips on crafting compelling personal statements and essays that highlight your unique qualities and academic goals.",
       icon: FileText,
       color: "bg-purple-50 text-purple-600",
+      url: "https://www.princetonreview.com/college-advice/college-essay-tips",
     },
     {
       id: "tip-002",
@@ -53,6 +58,7 @@ export default function ResourcesPage() {
       description: "Comprehensive list of documents needed for international university applications, with tips on proper preparation and authentication.",
       icon: FileText,
       color: "bg-indigo-50 text-indigo-600",
+      url: "https://www.studyabroad.com/guides/document-preparation",
     },
     {
       id: "tip-003",
@@ -60,6 +66,7 @@ export default function ResourcesPage() {
       description: "Strategies and practice questions to help you prepare for university admission interviews, including virtual interview tips.",
       icon: MessageSquare,
       color: "bg-pink-50 text-pink-600",
+      url: "https://www.topuniversities.com/student-info/admissions-advice/interview-tips",
     },
     {
       id: "tip-004",
@@ -67,10 +74,11 @@ export default function ResourcesPage() {
       description: "How to approach teachers and mentors for powerful recommendation letters that enhance your application profile.",
       icon: FileText,
       color: "bg-teal-50 text-teal-600",
+      url: "https://www.collegeboard.org/recommendation-letters",
     },
   ];
 
-  // Sample visa and travel guides
+  // Sample visa and travel guides with real URLs
   const visaGuides = [
     {
       id: "visa-001",
@@ -78,6 +86,7 @@ export default function ResourcesPage() {
       description: "Step-by-step process for obtaining a Ghanaian student visa, including document requirements, fees, and common pitfalls to avoid.",
       icon: Plane,
       color: "bg-blue-50 text-blue-600",
+      url: "https://ghanaembassynigeria.org/visa-services/student-visa",
     },
     {
       id: "visa-002",
@@ -85,6 +94,7 @@ export default function ResourcesPage() {
       description: "Detailed instructions on securing a South African study visa, medical insurance requirements, and visa renewal information.",
       icon: Plane,
       color: "bg-green-50 text-green-600",
+      url: "https://www.dha.gov.za/visa-services/study-visa",
     },
     {
       id: "visa-003",
@@ -92,6 +102,7 @@ export default function ResourcesPage() {
       description: "Essential items and tasks to complete before leaving Nigeria for your international study destination.",
       icon: Plane,
       color: "bg-orange-50 text-orange-600",
+      url: "https://www.studyabroad.com/guides/pre-departure-checklist",
     },
     {
       id: "visa-004",
@@ -99,6 +110,7 @@ export default function ResourcesPage() {
       description: "Guide to securing safe and affordable housing options near African universities, with tips for international students.",
       icon: Book,
       color: "bg-cyan-50 text-cyan-600",
+      url: "https://www.student.com/accommodation-guide",
     },
   ];
 
@@ -163,7 +175,7 @@ export default function ResourcesPage() {
                       <CardDescription>{guide.description}</CardDescription>
                     </CardHeader>
                     <CardFooter>
-                      <Link href={`/resources/country-guides/${guide.id}`} className="w-full">
+                      <Link href={guide.url} target="_blank" rel="noopener noreferrer" className="w-full">
                         <Button variant="outline" className="w-full justify-between">
                           Read Guide <ArrowRight className="h-4 w-4 ml-2" />
                         </Button>
@@ -243,7 +255,7 @@ export default function ResourcesPage() {
                       <CardDescription>{tip.description}</CardDescription>
                     </CardHeader>
                     <CardFooter>
-                      <Link href={`/resources/application-tips/${tip.id}`} className="w-full">
+                      <Link href={tip.url} target="_blank" rel="noopener noreferrer" className="w-full">
                         <Button variant="outline" className="w-full justify-between">
                           Read Article <ArrowRight className="h-4 w-4 ml-2" />
                         </Button>
@@ -342,7 +354,7 @@ export default function ResourcesPage() {
                       <CardDescription>{guide.description}</CardDescription>
                     </CardHeader>
                     <CardFooter>
-                      <Link href={`/resources/visa-info/${guide.id}`} className="w-full">
+                      <Link href={guide.url} target="_blank" rel="noopener noreferrer" className="w-full">
                         <Button variant="outline" className="w-full justify-between">
                           Read Guide <ArrowRight className="h-4 w-4 ml-2" />
                         </Button>

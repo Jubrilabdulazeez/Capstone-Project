@@ -14,8 +14,6 @@ export function CounselingInfo() {
   const handleDemoLogin = async () => {
     try {
       console.log("Starting demo login...");
-      // Remove import and use the auth context login
-      const { login } = await import("@/lib/context/AuthContext");
       // For demo, just redirect to login page
       router.push("/auth/signin");
     } catch (error) {
@@ -141,12 +139,12 @@ export function CounselingInfo() {
             application preparation, we're here to support your educational goals.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {features.map((feature) => (
               <div key={feature.title} className="text-center p-4 border rounded-lg">
-                <feature.icon className="h-8 w-8 text-primary mx-auto mb-2" />
-                <h4 className="font-medium mb-1">{feature.title}</h4>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
+                <feature.icon className="h-8 w-8 text-primary mx-auto mb-3" />
+                <h4 className="font-medium mb-2 text-sm">{feature.title}</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -162,16 +160,16 @@ export function CounselingInfo() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             {sessionTypes.map((session) => (
               <Card key={session.title} className="border border-border/60">
                 <CardContent className="p-4">
                   <div className="flex justify-between items-start mb-3">
-                    <h4 className="font-medium">{session.title}</h4>
+                    <h4 className="font-medium text-sm">{session.title}</h4>
                     <Badge variant="outline">{session.price}</Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-3">{session.description}</p>
-                  <div className="flex items-center text-sm text-muted-foreground">
+                  <p className="text-xs text-muted-foreground mb-3 leading-relaxed">{session.description}</p>
+                  <div className="flex items-center text-xs text-muted-foreground">
                     <Clock className="h-4 w-4 mr-1" />
                     {session.duration}
                   </div>
@@ -191,7 +189,7 @@ export function CounselingInfo() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
               { step: "1", title: "Book Session", description: "Choose your preferred counselor and time" },
               { step: "2", title: "Prepare", description: "Complete a brief questionnaire about your goals" },
@@ -202,8 +200,8 @@ export function CounselingInfo() {
                 <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-2 text-sm font-medium">
                   {step.step}
                 </div>
-                <h4 className="font-medium mb-1">{step.title}</h4>
-                <p className="text-sm text-muted-foreground">{step.description}</p>
+                <h4 className="font-medium mb-1 text-sm">{step.title}</h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">{step.description}</p>
               </div>
             ))}
           </div>

@@ -1,5 +1,5 @@
 "use client";
-import { AlertCircle, CheckCircle, Eye, EyeOff, Shield } from "lucide-react";
+import { AlertCircle, Eye, EyeOff, Shield } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -26,13 +26,7 @@ export default function AdminLoginPage() {
     if (error) setError("");
   };
 
-  const fillDemoCredentials = () => {
-    setFormData({
-      email: "testadmin@gmail.com",
-      password: "Password12"
-    });
-    setError("");
-  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -118,26 +112,7 @@ export default function AdminLoginPage() {
               </div>
             </div>
 
-            {/* Demo Credentials */}
-            <Alert>
-              <CheckCircle className="h-4 w-4" />
-              <AlertDescription>
-                <div className="flex justify-between items-center">
-                  <div className="text-sm">
-                    <strong>Demo:</strong> testadmin@gmail.com / Password12
-                  </div>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={fillDemoCredentials}
-                    disabled={isLoading}
-                  >
-                    Use Demo
-                  </Button>
-                </div>
-              </AlertDescription>
-            </Alert>
+
 
             <Button
               type="submit"
@@ -158,15 +133,7 @@ export default function AdminLoginPage() {
             </Button>
           </form>
 
-          <div className="mt-6 p-4 bg-muted/50 rounded-md">
-            <h4 className="text-sm font-medium mb-2">Administrator Access:</h4>
-            <div className="text-xs space-y-1">
-              <p>Use the demo credentials above to test the admin functionality.</p>
-              <p className="text-muted-foreground">
-                The system will try multiple login endpoints and fallback to demo mode if needed.
-              </p>
-            </div>
-          </div>
+
         </CardContent>
       </Card>
     </div>

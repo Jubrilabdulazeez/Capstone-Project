@@ -8,8 +8,6 @@ import {
   Building2,
   Users,
   GraduationCap,
-  FileText,
-  DollarSign,
   Eye,
   TrendingUp,
   TrendingDown,
@@ -52,13 +50,6 @@ const quickActions = [
     href: "/admin/scholarships",
     icon: GraduationCap,
     color: "bg-orange-500"
-  },
-  {
-    title: "View Applications",
-    description: "Review and process applications",
-    href: "/admin/applications",
-    icon: FileText,
-    color: "bg-red-500"
   },
   {
     title: "Add University",
@@ -258,28 +249,6 @@ export default function AdminDashboardPage() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Applications</p>
-                <p className="text-3xl font-bold">{dashboardStats.applications.total}</p>
-                <div className="flex items-center mt-2">
-                  {dashboardStats.applications.trend === "up" ? (
-                    <TrendingUp className="h-4 w-4 text-green-600" />
-                  ) : (
-                    <TrendingDown className="h-4 w-4 text-red-600" />
-                  )}
-                  <Badge variant="secondary" className="ml-2">
-                    {dashboardStats.applications.change} this month
-                  </Badge>
-                </div>
-              </div>
-              <FileText className="h-12 w-12 text-orange-600" />
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
                 <p className="text-sm font-medium text-muted-foreground">Counselors</p>
                 <p className="text-3xl font-bold">{dashboardStats.counselors?.total || 0}</p>
                 <div className="flex items-center mt-2">
@@ -294,28 +263,6 @@ export default function AdminDashboardPage() {
                 </div>
               </div>
               <UserPlus className="h-12 w-12 text-indigo-600" />
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">Revenue</p>
-                <p className="text-3xl font-bold">{formatCurrency(dashboardStats.revenue.total)}</p>
-                <div className="flex items-center mt-2">
-                  {dashboardStats.revenue.trend === "up" ? (
-                    <TrendingUp className="h-4 w-4 text-green-600" />
-                  ) : (
-                    <TrendingDown className="h-4 w-4 text-red-600" />
-                  )}
-                  <Badge variant="secondary" className="ml-2">
-                    {Math.abs(parseFloat(dashboardStats.revenue.change))}% this month
-                  </Badge>
-                </div>
-              </div>
-              <DollarSign className="h-12 w-12 text-yellow-600" />
             </div>
           </CardContent>
         </Card>

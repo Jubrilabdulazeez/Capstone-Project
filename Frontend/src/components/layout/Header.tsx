@@ -40,12 +40,15 @@ export function Header() {
   const { user, logout, isLoading } = useAuth();
 
   const getInitials = (name: string) => {
-    if (!name) return "U";
-    const names = name.split(" ");
+    if (!name || name.trim() === "") return "U";
+    const names = name.trim().split(" ").filter(n => n.length > 0);
     if (names.length >= 2) {
       return `${names[0].charAt(0)}${names[1].charAt(0)}`.toUpperCase();
     }
-    return name.charAt(0).toUpperCase();
+    if (names.length === 1) {
+      return names[0].charAt(0).toUpperCase();
+    }
+    return "U";
   };
 
   const handleLogout = async () => {
@@ -87,11 +90,14 @@ export function Header() {
             ) : user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                  <Button variant="ghost" className="relative h-8 w-8 rounded-full hover:bg-muted/50 transition-colors">
                     <Avatar className="h-8 w-8">
-                      <AvatarImage src={user.profilePicture || ""} alt={`${user.firstName} ${user.lastName}`} />
-                      <AvatarFallback>
-                        {getInitials(`${user.firstName} ${user.lastName}`)}
+                      <AvatarImage 
+                        src={user.profilePicture || ""} 
+                        alt={`${user.firstName} ${user.lastName}`} 
+                      />
+                      <AvatarFallback className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+                        <User className="h-4 w-4" />
                       </AvatarFallback>
                     </Avatar>
                   </Button>

@@ -58,46 +58,46 @@ export function CounselingFAQ() {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center">
+      <CardHeader className="pb-4">
+        <CardTitle className="flex items-center text-base">
           <HelpCircle className="h-5 w-5 mr-2" />
           Frequently Asked Questions
         </CardTitle>
-        <CardDescription>
+        <CardDescription className="text-xs leading-relaxed">
           Find answers to common questions about our counseling services
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
+      <CardContent className="pt-0">
+        <div className="space-y-3">
           {faqItems.map((item, index) => (
-            <div key={`faq-${index}-${item.question.slice(0, 20)}`} className="border rounded-lg">
+            <div key={`faq-${index}-${item.question.slice(0, 20)}`} className="border rounded-lg overflow-hidden">
               <Button
                 variant="ghost"
-                className="w-full justify-between p-4 h-auto text-left"
+                className="w-full justify-between p-3 h-auto text-left hover:bg-muted/50"
                 onClick={() => toggleItem(index)}
               >
-                <span className="font-medium pr-4">{item.question}</span>
+                <span className="font-medium pr-4 text-xs leading-relaxed flex-1 text-left">{item.question}</span>
                 {openItems.includes(index) ? (
-                  <ChevronUp className="h-4 w-4 flex-shrink-0" />
+                  <ChevronUp className="h-4 w-4 flex-shrink-0 ml-2" />
                 ) : (
-                  <ChevronDown className="h-4 w-4 flex-shrink-0" />
+                  <ChevronDown className="h-4 w-4 flex-shrink-0 ml-2" />
                 )}
               </Button>
               {openItems.includes(index) && (
-                <div className="px-4 pb-4">
-                  <p className="text-muted-foreground">{item.answer}</p>
+                <div className="px-3 pb-3 border-t bg-muted/30">
+                  <p className="text-muted-foreground text-xs leading-relaxed pt-3">{item.answer}</p>
                 </div>
               )}
             </div>
           ))}
         </div>
 
-        <div className="mt-8 p-4 bg-muted/50 rounded-lg">
-          <h4 className="font-medium mb-2">Still have questions?</h4>
-          <p className="text-sm text-muted-foreground mb-3">
+        <div className="mt-6 p-3 bg-muted/50 rounded-lg">
+          <h4 className="font-medium mb-2 text-xs">Still have questions?</h4>
+          <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
             Can't find the answer you're looking for? Our support team is here to help.
           </p>
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" className="text-xs">
             Contact Support
           </Button>
         </div>

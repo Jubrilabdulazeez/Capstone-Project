@@ -11,64 +11,51 @@ async function getDashboardStats() {
     console.log('Database connection successful');
   } catch (error) {
     console.error('Database connection failed:', error);
-    // Return empty stats if database is not available
-    return {
-      universities: { total: 0, change: "0%", trend: "up" },
-      students: { total: 0, change: "0%", trend: "up" },
-      counselors: { total: 0, change: "0%", trend: "up" },
-      scholarships: { total: 0, change: "0%", trend: "up" },
-      applications: { total: 0, change: "0%", trend: "up" },
-      revenue: { total: 0, change: "0%", trend: "up" }
-    };
+         // Return empty stats if database is not available
+     return {
+       universities: { total: 0, change: "0%", trend: "up" },
+       students: { total: 0, change: "0%", trend: "up" },
+       counselors: { total: 0, change: "0%", trend: "up" },
+       scholarships: { total: 0, change: "0%", trend: "up" }
+     };
   }
   
   const now = new Date();
   const lastMonth = new Date(now.getFullYear(), now.getMonth() - 1, now.getDate());
   
   try {
-    // Get current counts
-    const [
-      universitiesTotal,
-      studentsTotal,
-      counselorsTotal,
-      scholarshipsTotal,
-      applicationsTotal,
-      revenueTotal
-    ] = await Promise.all([
-      University.countDocuments({ isActive: true }).catch(() => 0),
-      User.countDocuments({ role: 'STUDENT' }).catch(() => 0),
-      User.countDocuments({ role: 'COUNSELOR' }).catch(() => 0),
-      Scholarship.countDocuments({ isActive: true }).catch(() => 0),
-      Application.countDocuments().catch(() => 0),
-      Application.countDocuments({ 
-        'paymentInfo.status': 'paid',
-        'paymentInfo.paidAt': { $exists: true }
-      }).catch(() => 0)
-    ]);
+         // Get current counts
+     const [
+       universitiesTotal,
+       studentsTotal,
+       counselorsTotal,
+       scholarshipsTotal
+     ] = await Promise.all([
+       University.countDocuments({ isActive: true }).catch(() => 0),
+       User.countDocuments({ role: 'STUDENT' }).catch(() => 0),
+       User.countDocuments({ role: 'COUNSELOR' }).catch(() => 0),
+       Scholarship.countDocuments({ isActive: true }).catch(() => 0)
+     ]);
     
-    // Get last month counts for comparison
-    const [
-      universitiesLastMonth,
-      studentsLastMonth,
-      scholarshipsLastMonth,
-      applicationsLastMonth
-    ] = await Promise.all([
-      University.countDocuments({ 
-        isActive: true, 
-        createdAt: { $gte: lastMonth } 
-      }).catch(() => 0),
-      User.countDocuments({ 
-        role: 'STUDENT',
-        createdAt: { $gte: lastMonth }
-      }).catch(() => 0),
-      Scholarship.countDocuments({ 
-        isActive: true,
-        createdAt: { $gte: lastMonth }
-      }).catch(() => 0),
-      Application.countDocuments({ 
-        createdAt: { $gte: lastMonth }
-      }).catch(() => 0)
-    ]);
+         // Get last month counts for comparison
+     const [
+       universitiesLastMonth,
+       studentsLastMonth,
+       scholarshipsLastMonth
+     ] = await Promise.all([
+       University.countDocuments({ 
+         isActive: true, 
+         createdAt: { $gte: lastMonth } 
+       }).catch(() => 0),
+       User.countDocuments({ 
+         role: 'STUDENT',
+         createdAt: { $gte: lastMonth }
+       }).catch(() => 0),
+       Scholarship.countDocuments({ 
+         isActive: true,
+         createdAt: { $gte: lastMonth }
+       }).catch(() => 0)
+     ]);
     
     // Calculate percentage changes
     const calculateChange = (current: number, lastMonth: number) => {
@@ -77,23 +64,7 @@ async function getDashboardStats() {
       return `+${percentage}%`;
     };
     
-    // Calculate revenue (mock calculation - you can implement actual revenue logic)
-    const revenue = await Application.aggregate([
-      { 
-        $match: { 
-          'paymentInfo.status': 'paid',
-          'paymentInfo.paidAt': { $exists: true }
-        }
-      },
-      {
-        $group: {
-          _id: null,
-          total: { $sum: '$paymentInfo.amount' }
-        }
-      }
-    ]).catch(() => []);
     
-    const revenueAmount = revenue.length > 0 ? revenue[0].total : 0;
     
     return {
       universities: {
@@ -116,16 +87,7 @@ async function getDashboardStats() {
         change: calculateChange(scholarshipsTotal, scholarshipsLastMonth),
         trend: "up"
       },
-      applications: {
-        total: applicationsTotal,
-        change: calculateChange(applicationsTotal, applicationsLastMonth),
-        trend: "up"
-      },
-      revenue: {
-        total: revenueAmount,
-        change: "+15%", // You can implement actual revenue comparison
-        trend: "up"
-      }
+      
     };
   } catch (error) {
     console.error('Error fetching dashboard stats:', error);

@@ -295,9 +295,9 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 flex">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-green-50 to-green-100 flex">
       {/* Left Side - Hero Section */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 relative overflow-hidden">
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-green-600 via-green-700 to-green-800 relative overflow-hidden">
         <div className="absolute inset-0 bg-black/10" />
         <div className="relative z-10 flex flex-col justify-center p-12 text-white">
           <div className="max-w-md">
@@ -312,7 +312,7 @@ export default function SignUpPage() {
               Start Your Academic Journey
             </h1>
             
-            <p className="text-blue-100 text-lg mb-8 leading-relaxed">
+            <p className="text-green-100 text-lg mb-8 leading-relaxed">
               Join thousands of students who have discovered their perfect university match across Africa.
             </p>
 
@@ -322,38 +322,38 @@ export default function SignUpPage() {
                 <div className="bg-white/20 rounded-full p-2 mr-3">
                   <Star className="h-4 w-4 text-yellow-300" />
                 </div>
-                <span className="text-blue-100">Personalized university recommendations</span>
+                <span className="text-green-100">Personalized university recommendations</span>
               </div>
               <div className="flex items-center">
                 <div className="bg-white/20 rounded-full p-2 mr-3">
                   <Zap className="h-4 w-4 text-yellow-300" />
                 </div>
-                <span className="text-blue-100">Instant application processing</span>
+                <span className="text-green-100">Instant application processing</span>
               </div>
               <div className="flex items-center">
                 <div className="bg-white/20 rounded-full p-2 mr-3">
                   <Shield className="h-4 w-4 text-green-300" />
                 </div>
-                <span className="text-blue-100">Secure and trusted platform</span>
+                <span className="text-green-100">Secure and trusted platform</span>
               </div>
               <div className="flex items-center">
                 <div className="bg-white/20 rounded-full p-2 mr-3">
-                  <Globe className="h-4 w-4 text-blue-300" />
+                  <Globe className="h-4 w-4 text-green-300" />
                 </div>
-                <span className="text-blue-100">Connect with African excellence</span>
+                <span className="text-green-100">Connect with African excellence</span>
               </div>
             </div>
 
             {/* Testimonial */}
             <div className="mt-12 p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-              <p className="text-blue-100 italic mb-3">
+              <p className="text-green-100 italic mb-3">
                 "EduConnect Africa helped me find my dream university. The platform is intuitive and the support is excellent!"
               </p>
               <div className="flex items-center">
                 <div className="w-8 h-8 bg-white/20 rounded-full mr-3" />
                 <div>
                   <div className="text-white font-medium text-sm">Sarah K.</div>
-                  <div className="text-blue-200 text-xs">University of Cape Town Student</div>
+                  <div className="text-green-200 text-xs">University of Cape Town Student</div>
                 </div>
               </div>
             </div>
@@ -372,7 +372,7 @@ export default function SignUpPage() {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex items-center justify-center mb-6 lg:hidden">
-              <div className="bg-blue-600 text-white rounded-2xl p-3 mr-3">
+              <div className="bg-green-600 text-white rounded-2xl p-3 mr-3">
                 <GraduationCap className="h-6 w-6" />
               </div>
               <h2 className="text-xl font-bold text-gray-900">EduConnect Africa</h2>
@@ -385,8 +385,8 @@ export default function SignUpPage() {
 
             {/* Student Account Badge */}
             <div className="flex justify-center mb-6">
-              <Badge variant="outline" className="text-xs bg-blue-50 border-blue-200">
-                <Users className="h-3 w-3 mr-1 text-blue-600" />
+              <Badge variant="outline" className="text-xs bg-green-50 border-green-200">
+                <Users className="h-3 w-3 mr-1 text-green-600" />
                 Student Registration
               </Badge>
             </div>
@@ -636,7 +636,7 @@ export default function SignUpPage() {
               <Button
                 type="submit"
                 disabled={isLoading || !formData.agreeToTerms}
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800"
+                className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800"
               >
                 {isLoading ? (
                   <div className="flex items-center">
@@ -657,7 +657,7 @@ export default function SignUpPage() {
                 Already have an account?{" "}
                 <Link
                   href="/auth/signin"
-                  className="text-blue-600 hover:underline font-medium"
+                  className="text-green-600 hover:underline font-medium"
                 >
                   Sign in here
                 </Link>
@@ -669,7 +669,7 @@ export default function SignUpPage() {
           <div className="text-center mt-6">
             <Link
               href="/"
-              className="text-sm text-muted-foreground hover:text-blue-600"
+              className="text-sm text-muted-foreground hover:text-green-600"
             >
               ← Back to home
             </Link>

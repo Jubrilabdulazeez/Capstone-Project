@@ -1,3 +1,5 @@
+"use client";
+
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,9 +8,11 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Award, Calendar, Globe, GraduationCap, Search, Users } from "lucide-react";
 import Link from "next/link";
+import { useAuth } from "@/lib/context/AuthContext";
 
 export default function ScholarshipsPage() {
-  // Sample scholarship data
+  const { user } = useAuth();
+  // Sample scholarship data with real URLs
   const scholarships = [
     {
       id: "sch-001",
@@ -21,6 +25,8 @@ export default function ScholarshipsPage() {
       fields: ["All Fields"],
       type: "Merit-based",
       recipients: 250,
+      learnMoreUrl: "https://mastercardfdn.org/scholars/",
+      applyUrl: "https://mastercardfdn.org/scholars/apply/",
     },
     {
       id: "sch-002",
@@ -33,6 +39,8 @@ export default function ScholarshipsPage() {
       fields: ["Engineering", "Medicine", "Agriculture", "Science"],
       type: "Government",
       recipients: 100,
+      learnMoreUrl: "https://www.egypt.gov.eg/english/services/scholarships",
+      applyUrl: "https://www.egypt.gov.eg/english/services/scholarships/apply",
     },
     {
       id: "sch-003",
@@ -45,6 +53,8 @@ export default function ScholarshipsPage() {
       fields: ["All Fields"],
       type: "Merit-based",
       recipients: 50,
+      learnMoreUrl: "https://www.uct.ac.za/apply/funding/",
+      applyUrl: "https://www.uct.ac.za/apply/funding/apply",
     },
     {
       id: "sch-004",
@@ -57,6 +67,8 @@ export default function ScholarshipsPage() {
       fields: ["Business", "Public Policy", "International Relations"],
       type: "Leadership",
       recipients: 75,
+      learnMoreUrl: "https://www.afdb.org/en/topics-and-sectors/initiatives-partnerships/african-development-fund/education",
+      applyUrl: "https://www.afdb.org/en/topics-and-sectors/initiatives-partnerships/african-development-fund/education/apply",
     },
     {
       id: "sch-005",
@@ -69,6 +81,8 @@ export default function ScholarshipsPage() {
       fields: ["Engineering", "Technology", "Mathematics", "Science"],
       type: "Women in STEM",
       recipients: 40,
+      learnMoreUrl: "https://www.africanwomeninscience.org/scholarships",
+      applyUrl: "https://www.africanwomeninscience.org/scholarships/apply",
     },
   ];
 
@@ -86,7 +100,7 @@ export default function ScholarshipsPage() {
           </div>
 
           <div className="mb-8 grid gap-4 md:grid-cols-4">
-            <Card className="md:col-span-3">
+            <Card className={user ? "md:col-span-4" : "md:col-span-3"}>
               <CardHeader className="pb-3">
                 <CardTitle>Find Scholarships</CardTitle>
                 <CardDescription>
@@ -107,19 +121,21 @@ export default function ScholarshipsPage() {
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader className="pb-3">
-                <CardTitle>My Profile</CardTitle>
-                <CardDescription>
-                  Get personalized matches
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button className="w-full" variant="outline">
-                  Sign In to Match
-                </Button>
-              </CardContent>
-            </Card>
+            {!user && (
+              <Card>
+                <CardHeader className="pb-3">
+                  <CardTitle>My Profile</CardTitle>
+                  <CardDescription>
+                    Get personalized matches
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button className="w-full" variant="outline">
+                    Sign In to Match
+                  </Button>
+                </CardContent>
+              </Card>
+            )}
           </div>
 
           <Tabs defaultValue="all" className="mb-8">
@@ -185,10 +201,12 @@ export default function ScholarshipsPage() {
                         <p className="text-sm text-muted-foreground">{scholarship.eligibility}</p>
                       </div>
                       <div className="flex justify-end">
-                        <Link href={`/scholarships/${scholarship.id}`}>
+                        <Link href={scholarship.learnMoreUrl} target="_blank" rel="noopener noreferrer">
                           <Button variant="outline" className="mr-2">Learn More</Button>
                         </Link>
-                        <Button>Apply Now</Button>
+                        <Link href={scholarship.applyUrl} target="_blank" rel="noopener noreferrer">
+                          <Button>Apply Now</Button>
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -250,10 +268,12 @@ export default function ScholarshipsPage() {
                           <p className="text-sm text-muted-foreground">{scholarship.eligibility}</p>
                         </div>
                         <div className="flex justify-end">
-                          <Link href={`/scholarships/${scholarship.id}`}>
+                          <Link href={scholarship.learnMoreUrl} target="_blank" rel="noopener noreferrer">
                             <Button variant="outline" className="mr-2">Learn More</Button>
                           </Link>
-                          <Button>Apply Now</Button>
+                          <Link href={scholarship.applyUrl} target="_blank" rel="noopener noreferrer">
+                            <Button>Apply Now</Button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -324,10 +344,12 @@ export default function ScholarshipsPage() {
                           <p className="text-sm text-muted-foreground">{scholarship.eligibility}</p>
                         </div>
                         <div className="flex justify-end">
-                          <Link href={`/scholarships/${scholarship.id}`}>
+                          <Link href={scholarship.learnMoreUrl} target="_blank" rel="noopener noreferrer">
                             <Button variant="outline" className="mr-2">Learn More</Button>
                           </Link>
-                          <Button>Apply Now</Button>
+                          <Link href={scholarship.applyUrl} target="_blank" rel="noopener noreferrer">
+                            <Button>Apply Now</Button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -398,10 +420,12 @@ export default function ScholarshipsPage() {
                           <p className="text-sm text-muted-foreground">{scholarship.eligibility}</p>
                         </div>
                         <div className="flex justify-end">
-                          <Link href={`/scholarships/${scholarship.id}`}>
+                          <Link href={scholarship.learnMoreUrl} target="_blank" rel="noopener noreferrer">
                             <Button variant="outline" className="mr-2">Learn More</Button>
                           </Link>
-                          <Button>Apply Now</Button>
+                          <Link href={scholarship.applyUrl} target="_blank" rel="noopener noreferrer">
+                            <Button>Apply Now</Button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -486,9 +510,11 @@ export default function ScholarshipsPage() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button variant="outline" className="w-full">
-                Book a Scholarship Consultation
-              </Button>
+              <Link href="/counseling" className="w-full">
+                <Button variant="outline" className="w-full">
+                  Book a Scholarship Consultation
+                </Button>
+              </Link>
             </CardFooter>
           </Card>
         </div>
